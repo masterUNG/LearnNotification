@@ -18,13 +18,10 @@ public class MainActivity extends Activity {
     }
 
     public void createNotification(View view) {
-        // Prepare intent which is triggered if the
-        // notification is selected
+
         Intent intent = new Intent(this, NotificationReceiverActivity.class);
         PendingIntent pIntent = PendingIntent.getActivity(this, (int) System.currentTimeMillis(), intent, 0);
 
-        // Build notification
-        // Actions are just fake
         Uri soundUri = RingtoneManager.getDefaultUri(Notification.DEFAULT_SOUND);
 
         Notification noti = new Notification.Builder(this)
@@ -33,12 +30,6 @@ public class MainActivity extends Activity {
                 .setSmallIcon(R.drawable.danger)
                 .setSound(soundUri)
                 .setContentIntent(pIntent).build();
-//                .addAction(R.drawable.danger, "Call", pIntent)
-//                .addAction(R.drawable.danger, "More", pIntent)
-//                .addAction(R.drawable.danger, "And more", pIntent).build();
-
-
-
 
         NotificationManager notificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
         // hide the notification after its selected
